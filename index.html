@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+    <head>
+        <meta charset="utf-8">
+        <title>Elo Rating System</title>
+        <link rel="stylesheet" type="text/css" href="css/main.css"/>
+        <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css"/>
+        <!-- loading angular in the head section is used to work with ngCloak
+        and prevent the Angular html template from being briefly displayed by
+        the browser in its raw (uncompiled) from while the application is loading -->
+        <script type="text/javascript" src="lib/angular/angular.min.js"></script>
+        <script type="text/javascript" src="lib/angular/angular-route.min.js"></script>
+    </head>
+    <body class="ng-cloak">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#/">Elo Rating</a>
+                </div>
+
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav">
+                        <li ng-class="{
+                                active: isActive('/rating')
+                            }"><a href="#/rating">Ratings</a></li>
+                        <li ng-class="{
+                                active: isActive('/admin')
+                            }" ng-show="authData"><a href="#/admin">Admin</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li ng-hide="authData" class="active"><a href="#/login">Login</a></li>
+                        <li ng-show="authData"><a href ng-click="logout()">Logout</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container -->
+        </nav>
+
+        <div class="container">
+            <!-- Main content -->
+            <div ng-view></div>
+        </div>
+
+        <div class="navbar navbar-default navbar-fixed-bottom">
+            <div class="container">
+                <p class="text-muted credit">This is a <a href="http://github.com/cdeng/elorating" title="Github project" target="_blank">
+                        Github</a> Project.  {{ 'Current version is v%VERSION%.' | interpolate }}</p>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="lib/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="lib/firebase/firebase.js"></script>
+        <script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="lib/angularFire/angularfire.min.js"></script>
+
+        <!-- custom modules -->
+        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/config.js"></script>
+        <script type="text/javascript" src="js/services.js"></script>
+        <script type="text/javascript" src="js/controllers.js"></script>
+        <script type="text/javascript" src="js/filters.js"></script>
+        <script type="text/javascript" src="js/directives.js"></script>
+</body>
+</html>

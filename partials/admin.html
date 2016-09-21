@@ -1,0 +1,121 @@
+
+<div class="col-md-12">
+
+    <!-- success information/alert -->
+    <div class="alert alert-success alert-dismissable" ng-show="addResultSuccessInfo">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong>The game result has been successfully added.</strong>.
+    </div>
+
+    <ul>
+        <li>An implementation of the Elo rating system in JS.</li>
+        <li>Rules:</li>
+    </ul>
+
+    <hr>
+
+    <button type="button" class="btn btn-primary pull-right"
+            ng-click="addGameResult()">Add a New Game Result</button>
+
+</div>
+
+<!-- Add game result modal dialog -->
+<div class="modal fade" id="addGameResultDialog" tabindex="-1" role="dialog" aria-labelledby="record" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Add a New Game Result</h4>
+            </div>
+
+            <div class="modal-body">
+                <form name="newResultForm">
+                    <!-- players info -->
+                    <div class="form-group">
+                        <label>Player A</label>
+                        <angucomplete id="p1"
+                                      placeholder="Search Player Names"
+                                      pause="100"
+                                      selectedobject="gameData.p1Name"
+                                      localdata="playersArray"
+                                      searchfields="name"
+                                      titlefield="name"
+                                      minlength="1"
+                                      inputclass="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Player B</label>
+                        <angucomplete id="p2"
+                                      placeholder="Search Player Names"
+                                      pause="100"
+                                      selectedobject="gameData.p2Name"
+                                      localdata="playersArray"
+                                      searchfields="name"
+                                      titlefield="name"
+                                      minlength="1"
+                                      inputclass="form-control"/>
+                    </div>
+
+                    <!-- game result -->
+                    <div>
+                        <label>Game Result</label>
+                        <div class="form-group">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary" ng-model="gameData.result" btn-radio=1>
+                                    {{gameData.p1Name|| "Player A" }} Won
+                                </button>
+                                <button type="button" class="btn btn-primary" ng-model="gameData.result" btn-radio=0.5>
+                                    Draw
+                                </button>
+                                <button type="button" class="btn btn-primary" ng-model="gameData.result" btn-radio=0>
+                                    {{gameData.p2Name|| "Player B" }} Won
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- preview -->
+                    <div class="bs-callout bs-callout-info">
+                        <h4>Rating Change Preview</h4>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Rating Change</th>
+                                    <th>New Rating</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{gameData.p1Name|| "Player A"}} <span class="label label-default">{{p1Rating}}</span></td>
+                                    <td>
+                                        <span class="label label-default" ng-if="ratingChange === 0">+ {{ratingChange}}</span>
+                                        <span class="label label-success" ng-if="ratingChange > 0">+ {{ratingChange}}</span>
+                                        <span class="label label-danger" ng-if="ratingChange < 0">- {{-ratingChange}}</span>
+                                    </td>
+                                    <td>{{p1NewRating}}</td>
+                                </tr>
+                                <tr>
+                                    <td>{{gameData.p2Name|| "Player B"}} <span class="label label-default">{{p2Rating}}</span></td>
+                                    <td>
+                                        <span class="label label-default" ng-if="ratingChange === 0">+ {{ratingChange}}</span>
+                                        <span class="label label-success" ng-if="-ratingChange > 0">+ {{-ratingChange}}</span>
+                                        <span class="label label-danger" ng-if="-ratingChange < 0">- {{ratingChange}}</span>
+                                    </td>
+                                    <td>{{p2NewRating}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="addButton" ng-disabled="newResultForm.$invalid"
+                        data-loading-text="Saving..." ng-click="saveResult()">Save</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
