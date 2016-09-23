@@ -29,7 +29,10 @@
     margin-bottom: 0;
 }
 
-.intro-button {
+.padding-top-20 {
     padding-top: 20px;
+}
+
+.padding-bottom-80 {
     padding-bottom: 80px;
 }
