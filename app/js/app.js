@@ -5,13 +5,18 @@
  * @module myApp
  */
 var app = angular.module("myApp", [
-    "firebase", "myApp.config", "myApp.filters", "myApp.services",
+    "firebase", "ui.bootstrap", "myApp.config", "myApp.filters", "myApp.services",
     "myApp.directives", "myApp.controllers"
 ]);
 
 // configure views
 app.config(["$routeProvider",
     function ($routeProvider) {
+        
+        $routeProvider.when("/intro", {
+            templateUrl: "partials/intro.html",
+            controller: "introCtrl"
+        });
 
         $routeProvider.when("/rating", {
             templateUrl: "partials/rating.html",
@@ -35,12 +40,12 @@ app.config(["$routeProvider",
             }
         });
 
-        $routeProvider.otherwise({redirectTo: "/rating"});
+        $routeProvider.otherwise({redirectTo: "/intro"});
 
     }
 ]);
 
-// redirect the user back to the rating page if auth error is catched
+// redirect the user back to the intro page if auth error is catched
 app.run(["$rootScope", "$location", "Auth",
     function ($rootScope, $location, Auth) {
 
@@ -51,7 +56,7 @@ app.run(["$rootScope", "$location", "Auth",
 
         $rootScope.logout = function () {
             Auth.$signOut();
-            $location.path("/rating");
+            $location.path("/intro");
         };
 
         // show nav menu in highlight when it's active
@@ -61,7 +66,7 @@ app.run(["$rootScope", "$location", "Auth",
 
         $rootScope.$on("$routeChangeError", function (event, next, previous, error) {
             if (error === "AUTH_REQUIRED") {
-                $location.path("/rating");
+                $location.path("/intro");
             }
         });
     }

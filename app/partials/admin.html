@@ -1,22 +1,27 @@
+<!-- success information/alert -->
+<div class="alert alert-success alert-dismissable" ng-show="addResultSuccessInfo">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <strong>The game result has been successfully added.</strong>.
+</div>
 
-<div class="col-md-12">
+<div class="page-header">
+    <h1>Administration</h1>
+</div>
+<div>
+    <p>
+        Please select player name from dropdown list.  If the player name is not
+        in dropdown list, a new player will be added.
+    </p>
+    <p>
+        Each new player starts with a default rating of <strong>1000</strong>.
+    </p>
+</div>
 
-    <!-- success information/alert -->
-    <div class="alert alert-success alert-dismissable" ng-show="addResultSuccessInfo">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <strong>The game result has been successfully added.</strong>.
-    </div>
+<hr>
 
-    <ul>
-        <li>An implementation of the Elo rating system in JS.</li>
-        <li>Rules:</li>
-    </ul>
-
-    <hr>
-
-    <button type="button" class="btn btn-primary pull-right"
+<div class="intro-button">
+    <button type="button" class="btn btn-primary center-block"
             ng-click="addGameResult()">Add a New Game Result</button>
-
 </div>
 
 <!-- Add game result modal dialog -->
@@ -34,27 +39,15 @@
                     <!-- players info -->
                     <div class="form-group">
                         <label>Player A</label>
-                        <angucomplete id="p1"
-                                      placeholder="Search Player Names"
-                                      pause="100"
-                                      selectedobject="gameData.p1Name"
-                                      localdata="playersArray"
-                                      searchfields="name"
-                                      titlefield="name"
-                                      minlength="1"
-                                      inputclass="form-control"/>
+                        <input type="text" ng-model="gameData.p1Name" 
+                               uib-typeahead="player.name for player in playersArray | filter: $viewValue" 
+                               class="form-control" typeahead-min-length="0">
                     </div>
                     <div class="form-group">
                         <label>Player B</label>
-                        <angucomplete id="p2"
-                                      placeholder="Search Player Names"
-                                      pause="100"
-                                      selectedobject="gameData.p2Name"
-                                      localdata="playersArray"
-                                      searchfields="name"
-                                      titlefield="name"
-                                      minlength="1"
-                                      inputclass="form-control"/>
+                        <input type="text" ng-model="gameData.p2Name" 
+                               uib-typeahead="player.name for player in playersArray | filter: $viewValue" 
+                               class="form-control" typeahead-min-length="0">
                     </div>
 
                     <!-- game result -->
@@ -62,13 +55,13 @@
                         <label>Game Result</label>
                         <div class="form-group">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-primary" ng-model="gameData.result" btn-radio=1>
+                                <button type="button" class="btn btn-primary" ng-model="gameData.result" uib-btn-radio=1>
                                     {{gameData.p1Name|| "Player A" }} Won
                                 </button>
-                                <button type="button" class="btn btn-primary" ng-model="gameData.result" btn-radio=0.5>
+                                <button type="button" class="btn btn-primary" ng-model="gameData.result" uib-btn-radio=0.5>
                                     Draw
                                 </button>
-                                <button type="button" class="btn btn-primary" ng-model="gameData.result" btn-radio=0>
+                                <button type="button" class="btn btn-primary" ng-model="gameData.result" uib-btn-radio=0>
                                     {{gameData.p2Name|| "Player B" }} Won
                                 </button>
                             </div>

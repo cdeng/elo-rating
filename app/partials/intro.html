@@ -1,0 +1,29 @@
+<div class="page-header">
+    <h1>Elo Rating Sytem</h1>
+</div>
+<div>
+    <p>
+        The <a href="https://en.wikipedia.org/wiki/Elo_rating_system" target="_blank">Elo rating system</a> was originally invented by Arpad Elo 
+        to calculate skill levels of chess players.  This system has been widely used as a rating
+        system for multiplayer competition in a number of video games, football and many other games.
+    </p>
+    <p>
+        This app is the implementation of Elo rating system.
+    </p>
+    <p>
+        Each new player starts with a default rating of 1000, which will increase
+        or decrease based upon the outcome of games.
+    </p>
+    <p>
+        When a match is played between players of different ratings, the lower ranked
+        player will gain a higher rating change if he/she wins and smaller loss,
+        when compared to the higher ranked player.
+    </p>
+</div>
+
+<hr>
+
+<div class="intro-button">
+    <button type="button" class="btn btn-primary btn-lg center-block"
+            ng-click="goToRating()">Check out the latest Rankings</button>
+</div>

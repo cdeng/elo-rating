@@ -1,12 +1,8 @@
-<div class="col-md-12">
-    <ul>
-        <li>An implementation of the Elo rating system in JS.</li>
-        <li>Rules:</li>
-    </ul>
-    <hr>
+<div>
+    Last updated on: <code>{{results[0].timestamp | date: "medium"}}</code>
 </div>
-
-<div class="col-md-12">
+<hr>
+<div>
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" ng-class="{'active': activeTab === 'ranking'}">
@@ -38,7 +34,7 @@
                     <tr ng-repeat="player in playersArray| orderBy: '-stats.rating'">
                         <td>{{$index + 1}}</td>
                         <td>{{player.name}}</td>
-                        <td>{{player.stats.rating}}</td>
+                        <td><span class="label label-primary">{{player.stats.rating}}</span></td>
                         <td>{{player.stats.peakRating}}</td>
                         <td>{{player.stats.gamePlayed}}</td>
                         <td>{{player.stats.wins}}</td>

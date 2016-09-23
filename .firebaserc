@@ -1,6 +1,5 @@
 {
   "projects": {
-    "staging": "elo-rating",
     "default": "elo-rating"
   }
 }

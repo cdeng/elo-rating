@@ -9,9 +9,8 @@
 
 ## Formulas
 
-R'a = Ra + K(Sa - Ea)
-
-R'b = Rb + K(Sb - Eb)
+* R'a = Ra + K(Sa - Ea)
+* R'b = Rb + K(Sb - Eb)
 
 * R'a/R'b - New ratings of player A and player b
 * Ra/Rb - Old ratings of player A and player b
@@ -27,6 +26,7 @@ R'b = Rb + K(Sb - Eb)
 * [Google AngularJS 1.5.8](https://angularjs.org/)
 * [Google Firebase 3.4.0](https://firebase.google.com)
 * [Bootstrap 3.3.7](http://getbootstrap.com/)
+* [Angular UI for Bootstrap 2.1.3](https://angular-ui.github.io/bootstrap/)
 * [JQuery 3.1.0](https://jquery.com/)
 
 ## Configuration
@@ -59,7 +59,7 @@ $scope.password = "password";
 
 ## Contributing
 
-1. Fork it ( https://github.com/cdeng/elorating/fork )
+1. Fork it ( https://github.com/cdeng/elo-rating/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)

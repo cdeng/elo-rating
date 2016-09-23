@@ -6,6 +6,12 @@
  */
 var app = angular.module("myApp.controllers", []);
 
+app.controller("introCtrl", function ($scope, $location) {
+    $scope.goToRating = function() {
+        $location.path("/rating");
+    };
+});
+
 // Rating controller
 app.controller("ratingCtrl", function ($scope, $firebaseObject, $firebaseArray) {
 
@@ -32,8 +38,7 @@ app.controller("ratingCtrl", function ($scope, $firebaseObject, $firebaseArray) 
         $scope.activeTab = tabToSet;
     };
 
-}
-);
+});
 
 // Login controller
 app.controller("loginCtrl", function ($scope, $location, Auth) {
@@ -352,5 +357,4 @@ app.controller("adminCtrl", function ($scope, $firebaseArray, $firebaseObject) {
         $scope.pushGameResult(gameResultObj);
     };
 
-}
-);
+});
